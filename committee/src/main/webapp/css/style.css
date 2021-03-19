@@ -1,0 +1,13 @@
+.form-signin{
+	width: 300px;
+	margin: auto;
+}
+.form-control{
+	margin-bottom: 10px;
+}
+.container{
+	margin-top: 100px;
+}
+.form-heading{
+	text-align: center;
+}

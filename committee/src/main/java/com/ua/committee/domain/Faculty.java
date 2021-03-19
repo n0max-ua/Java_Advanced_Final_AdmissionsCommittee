@@ -2,12 +2,39 @@ package com.ua.committee.domain;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "faculty")
 public class Faculty {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+
+	@Column
 	private String title;
+
+	@Column
 	private String description;
+
+	@Column
 	private Integer passingMark;
+
+	@Column
 	private Integer totalStudents;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_faculty", joinColumns = @JoinColumn(name = "faculty_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> students;
 
 	public Faculty() {

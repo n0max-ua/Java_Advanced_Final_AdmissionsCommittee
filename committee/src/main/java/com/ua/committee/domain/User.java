@@ -2,37 +2,89 @@ package com.ua.committee.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
 public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Integer id;
+
+	@Column
 	private String firstName;
+
+	@Column
 	private String lastName;
+
+	@Column
 	private String email;
+
+	@Enumerated(EnumType.STRING)
 	private UserRole role;
+
+	@Column
 	private String password;
+
+	@Column
+	private String passwordConfirm;
+
+	//@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "certificate_id", referencedColumnName = "id")
 	private Сertificate certificate;
-	private List<Faculty> availableFaculty;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<FacultyRegistration> availableFaculty;
 
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String email, UserRole role, String password,
+	public User(User user) {
+		this.id = user.id;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.email = user.email;
+		this.role = user.role;
+		this.password = user.password;
+		this.certificate = user.certificate;
+	}
+
+	public User(String firstName, String lastName, String email, UserRole role, String password, String passwordConfirm,
 			Сertificate certificate) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.role = role;
 		this.password = password;
+		this.passwordConfirm = passwordConfirm;
 		this.certificate = certificate;
+
 	}
 
 	public User(Integer id, String firstName, String lastName, String email, UserRole role, String password,
-			Сertificate certificate) {
+			String passwordConfirm, Сertificate certificate) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.role = role;
 		this.password = password;
+		this.passwordConfirm = passwordConfirm;
 		this.certificate = certificate;
 	}
 
@@ -84,6 +136,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+
 	public Сertificate getCertificate() {
 		return certificate;
 	}
@@ -92,11 +152,11 @@ public class User {
 		this.certificate = certificate;
 	}
 
-	public List<Faculty> getAvailableFaculty() {
+	public List<FacultyRegistration> getAvailableFaculty() {
 		return availableFaculty;
 	}
 
-	public void setAvailableFaculty(List<Faculty> availableFaculty) {
+	public void setAvailableFaculty(List<FacultyRegistration> availableFaculty) {
 		this.availableFaculty = availableFaculty;
 	}
 

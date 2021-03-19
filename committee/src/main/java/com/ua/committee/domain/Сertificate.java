@@ -1,13 +1,41 @@
 package com.ua.committee.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "certificate")
 public class Сertificate {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	 @Column(name = "id")
 	private Integer id;
+	
+	@Column
 	private Integer math;
+	
+	@Column
 	private Integer history;
+	
+	@Column
 	private Integer physics;
+	
+	@Column
 	private Integer biology;
+	
+	@Column
 	private Integer chemistry;
+	
+	@Column
 	private Integer english;
+	
+	@OneToOne(mappedBy = "certificate")
 	private User user;
 
 	public Сertificate() {
