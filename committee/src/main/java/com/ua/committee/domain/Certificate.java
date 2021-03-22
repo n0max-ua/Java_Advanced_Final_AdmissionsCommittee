@@ -1,19 +1,59 @@
 package com.ua.committee.domain;
 
-public class Сertificate {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "certificate")
+public class Certificate {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	 @Column(name = "id")
 	private Integer id;
+	
+	@Column
 	private Integer math;
+	
+	@Column
 	private Integer history;
+	
+	@Column
 	private Integer physics;
+	
+	@Column
 	private Integer biology;
+	
+	@Column
 	private Integer chemistry;
+	
+	@Column
 	private Integer english;
+	
+	@OneToOne
+	@MapsId
 	private User user;
 
-	public Сertificate() {
+	public Certificate() {
+	}
+	
+	public Certificate(Certificate certificate) {
+		this.math = certificate.math;
+		this.history = certificate.history;
+		this.physics = certificate.physics;
+		this.biology = certificate.biology;
+		this.chemistry = certificate.chemistry;
+		this.english = certificate.english;
+		
 	}
 
-	public Сertificate(Integer math, Integer history, Integer physics, Integer biology, Integer chemistry,
+	public Certificate(Integer math, Integer history, Integer physics, Integer biology, Integer chemistry,
 			Integer english) {
 		this.math = math;
 		this.history = history;
@@ -23,7 +63,7 @@ public class Сertificate {
 		this.english = english;
 	}
 
-	public Сertificate(Integer id, Integer math, Integer history, Integer physics, Integer biology, Integer chemistry,
+	public Certificate(Integer id, Integer math, Integer history, Integer physics, Integer biology, Integer chemistry,
 			Integer english) {
 		this.id = id;
 		this.math = math;
@@ -120,7 +160,7 @@ public class Сertificate {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Сertificate other = (Сertificate) obj;
+		Certificate other = (Certificate) obj;
 		if (biology == null) {
 			if (other.biology != null)
 				return false;
@@ -161,7 +201,7 @@ public class Сertificate {
 
 	@Override
 	public String toString() {
-		return "Сertificate [id=" + id + ", math=" + math + ", history=" + history + ", physics=" + physics
+		return "Cert [id=" + id + ", math=" + math + ", history=" + history + ", physics=" + physics
 				+ ", biology=" + biology + ", chemistry=" + chemistry + ", english=" + english + "]";
 	}
 
