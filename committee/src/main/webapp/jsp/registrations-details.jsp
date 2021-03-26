@@ -4,6 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -15,14 +16,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Create faculty</title>
+<title>Main</title>
 
 <link rel="stylesheet prefetch"
 	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
 
+</head>
 <body>
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -46,40 +47,51 @@
 			registrations</a>
 	</div>
 
-	<div class="container">
+	<div class="w3-container"
+		style="display: flex; flex-wrap: wrap; padding-left: 16%;">
+		<div class="w3-card-4" style="width: 100%; margin: 10px">
 
-		<form:form method="POST" modelAttribute="facultyForm"
-			class="form-signin">
-			<h2 class="form-heading">Create faculty</h2>
+			<div class="w3-container w3-center w3-light-grey"
+				style="padding: 1%;">
 
-			<input class="form-control" type="text" name="title"
-				placeholder="Title" required />
-			<textarea class="form-control" name="description" rows="10" cols="5"
-				placeholder="Description" required></textarea>
-			<input class="form-control" list="subjects" name="firstSubject"
-				placeholder="First subject" required>
-			<input class="form-control" list="subjects" name="secondSubject"
-				placeholder="Second subject" required>
-			<input class="form-control" list="subjects" name="thirdSubject"
-				placeholder="Third subject" required>
-			<input class="form-control" type="number" name="passingMark"
-				placeholder="Passing mark" min="0" max="100" required />
-			<input class="form-control" type="number" name="totalStudents"
-				placeholder="Total students" min="0" required />
-			<button class="btn btn-primary" type="submit">Create</button>
+				<p>
+					<b>Facuty:</b> ${registration.faculty.getTitle()}
+				</p>
+				<p>
+					<b>Orientation:</b> ${registration.faculty.getFirstSubject()},
+					${registration.faculty.getSecondSubject()},
+					${registration.faculty.getThirdSubject()}
+				</p>
+				<p>
+					<b>Passing mark:</b> ${registration.faculty.getPassingMark()}
+				</p>
+				<br>
+				<p>
+					<b>User email:</b> ${registration.user.getEmail()}
+				</p>
 
-			<datalist id="subjects">
-				<option value="Math">
-				<option value="History">
-				<option value="Physics">
-				<option value="Biology">
-				<option value="Chemistry">
-				<option value="English">
-			</datalist>
+				<p>
+					<b>User mark:</b> ${userMark}
+				</p>
 
-		</form:form>
+				<form:form method="POST"
+					action="/registrations/${registration.id}/apply"
+					class="form-signin">
+					<button class="btn btn-primary" type="submit">Apply</button>
+				</form:form>
+				<br>
+				<form:form method="POST"
+					action="/registrations/${registration.id}/delete"
+					class="form-signin">
+					<button class="btn btn-danger" type="submit">Refuse</button>
+				</form:form>
+
+			</div>
+
+		</div>
 
 	</div>
+
 
 </body>
 </html>

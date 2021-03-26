@@ -17,7 +17,8 @@
 
 <title>Create certificate</title>
 
-<link rel="stylesheet prefetch" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel="stylesheet prefetch"
+	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -37,29 +38,38 @@
 		</h3>
 	</c:if>
 
-	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%; top: 0;">
+	<div class="w3-sidebar w3-light-grey w3-bar-block"
+		style="width: 15%; top: 0;">
 		<h3 class="w3-bar-item">Menu</h3>
-		<a href="/admin" class="w3-bar-item w3-button">Home</a>
-		<a href="/createCertificate" class="w3-bar-item w3-button">Create
+		<a href="/home" class="w3-bar-item w3-button">Home</a> <a
+			href="/createCertificate" class="w3-bar-item w3-button">Create
 			Certificate</a>
-		<a	href="#" class="w3-bar-item w3-button">#</a>
 	</div>
 
 	<div class="container">
 
-		<form:form method="POST" modelAttribute="certificateForm" class="form-signin">
+		<form:form method="POST" modelAttribute="createCertificate"
+			class="form-signin">
 			<h2 class="form-heading">Create certificate</h2>
 
-			<input class="form-control" type="number" name="math" placeholder="Math mark" min="0" max="100" required/>
-			<input class="form-control" type="number" name="history" placeholder="History mark" min="0" max="100" required>
-			<input class="form-control" type="number" name="physics" placeholder="Physics mark" min="0" max="100" required/>
-			<input class="form-control" type="number" name="biology" placeholder="Biology mark" min="0" max="100" required/>
-			<input class="form-control" type="number" name="chemistry" placeholder="Chemistry mark" min="0" max="100" required/>
-			<input class="form-control" type="number" name="english" placeholder="English mark" min="0" max="100" required/>
-			
+			<input class="form-control" type="number" name="math"
+				placeholder="Math mark" min="0" max="100" required />
+			<input class="form-control" type="number" name="history"
+				placeholder="History mark" min="0" max="100" required>
+			<input class="form-control" type="number" name="physics"
+				placeholder="Physics mark" min="0" max="100" required />
+			<input class="form-control" type="number" name="biology"
+				placeholder="Biology mark" min="0" max="100" required />
+			<input class="form-control" type="number" name="chemistry"
+				placeholder="Chemistry mark" min="0" max="100" required />
+			<input class="form-control" type="number" name="english"
+				placeholder="English mark" min="0" max="100" required />
+
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+
 		</form:form>
+
 	</div>
-	
+
 </body>
 </html>

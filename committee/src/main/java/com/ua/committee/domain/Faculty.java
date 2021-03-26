@@ -2,15 +2,14 @@ package com.ua.committee.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,13 +25,13 @@ public class Faculty {
 
 	@Column
 	private String description;
-	
+
 	@Column
 	private String firstSubject;
-	
+
 	@Column
 	private String secondSubject;
-	
+
 	@Column
 	private String thirdSubject;
 
@@ -41,15 +40,14 @@ public class Faculty {
 
 	@Column
 	private Integer totalStudents;
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_faculty", joinColumns = @JoinColumn(name = "faculty_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+
+	@OneToMany(mappedBy = "faculty", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<User> students;
 
 	public Faculty() {
-		
+
 	}
-	
+
 	public Faculty(Faculty faculty) {
 		this.title = faculty.title;
 		this.description = faculty.description;
@@ -60,8 +58,6 @@ public class Faculty {
 		this.totalStudents = faculty.totalStudents;
 		this.students = faculty.students;
 	}
-	
-	
 
 	public Faculty(String title, String description, String firstSubject, String secondSubject, String thirdSubject,
 			Integer passingMark, Integer totalStudents, List<User> students) {
@@ -75,8 +71,6 @@ public class Faculty {
 		this.students = students;
 	}
 
-
-
 	public Faculty(Integer id, String title, String description, String firstSubject, String secondSubject,
 			String thirdSubject, Integer passingMark, Integer totalStudents, List<User> students) {
 		this.id = id;
@@ -89,8 +83,6 @@ public class Faculty {
 		this.totalStudents = totalStudents;
 		this.students = students;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -115,8 +107,6 @@ public class Faculty {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 
 	public String getFirstSubject() {
 		return firstSubject;
@@ -165,8 +155,6 @@ public class Faculty {
 	public void setStudents(List<User> students) {
 		this.students = students;
 	}
-
-	
 
 	@Override
 	public int hashCode() {
@@ -241,7 +229,5 @@ public class Faculty {
 				+ firstSubject + ", secondSubject=" + secondSubject + ", thirdSubject=" + thirdSubject
 				+ ", passingMark=" + passingMark + ", totalStudents=" + totalStudents + "]";
 	}
-
-	
 
 }

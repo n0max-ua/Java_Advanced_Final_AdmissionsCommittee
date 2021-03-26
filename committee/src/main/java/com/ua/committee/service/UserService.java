@@ -22,13 +22,13 @@ public class UserService {
 		user.setRole(UserRole.ROLE_USER);
 		userRepository.save(user);
 	}
-	
+
 	public User findByEmail(String email) {
-        return userRepository.findByEmail(email).get();
-    }
-	
+		return userRepository.findByEmail(email).get();
+	}
+
 	public void update(User user) {
-	    userRepository.save(user);
-	  }
+		userRepository.save(user);
+	}
 
 }

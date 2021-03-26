@@ -25,12 +25,19 @@ public class CertificateController {
 
 	@RequestMapping(value = "/createCertificate", method = RequestMethod.GET)
 	public String createCertificate(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userEmail = auth.getName();
+		User user = userService.findByEmail(userEmail);
+
 		model.addAttribute("certificateForm", new Certificate());
+		model.addAttribute("photo", user);
+
 		return "createCertificate";
 	}
 
 	@RequestMapping(value = "/createCertificate", method = RequestMethod.POST)
-	private String createCertificate(@ModelAttribute("certificateForm") Certificate certificateForm, Model model) {
+	private String createCertificate(@ModelAttribute("certificateForm") Certificate certificateForm) {
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userEmail = auth.getName();
 		User user = userService.findByEmail(userEmail);
@@ -40,7 +47,7 @@ public class CertificateController {
 		certificateForm.setUser(user);
 		certificateService.save(certificateForm);
 
-		return "redirect:/login";
+		return "redirect:/addPhoto";
 
 	}
 

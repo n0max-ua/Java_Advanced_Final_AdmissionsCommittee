@@ -1,6 +1,9 @@
 body{
 	font-family: monospace;
 }
+textarea{
+	resize: none;
+}
 
 .form-signin{
 	width: 300px;

@@ -10,10 +10,10 @@ import com.ua.committee.domain.Certificate;
 public class CertificateService {
 	@Autowired
 	private СertificateRepository certRepository;
-	
+
 	public void save(Certificate certificate) {
 		certRepository.save(certificate);
-		
+
 	}
 
 }

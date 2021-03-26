@@ -1,4 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -12,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Home</title>
+<title>Add Photo</title>
 
 <link rel="stylesheet prefetch"
 	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
@@ -43,7 +46,21 @@
 
 	</div>
 
+	<div class="container">
 
+		<form:form method="POST" modelAttribute="createCertificate"
+			class="form-signin" enctype="multipart/form-data">
+			<h2 class="form-heading">Add Photo</h2>
+
+
+			<input type="file" name="photo" required />
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Add
+				Photo</button>
+
+		</form:form>
+
+	</div>
 
 </body>
 </html>

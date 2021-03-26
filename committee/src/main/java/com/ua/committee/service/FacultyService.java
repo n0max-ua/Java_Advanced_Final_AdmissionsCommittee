@@ -17,8 +17,12 @@ public class FacultyService {
 	public void save(Faculty faculty) {
 		facultyRepository.save(faculty);
 	}
-	
-	public List<Faculty> getAll(){
+
+	public Faculty findById(Integer id) {
+		return facultyRepository.findById(id).get();
+	}
+
+	public List<Faculty> getAll() {
 		return facultyRepository.findAll();
 	}
 

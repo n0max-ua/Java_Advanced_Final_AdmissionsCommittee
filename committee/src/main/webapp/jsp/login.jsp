@@ -15,7 +15,8 @@
 
 <title>Log in</title>
 
-<link rel="stylesheet prefetch" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel="stylesheet prefetch"
+	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -29,10 +30,10 @@
 
 			<div class="form-group ${error != null ? 'has-error' : ''}">
 				<span>${message}</span> <input name="email" type="text"
-					class="form-control" placeholder="Email"/> <input
-					name="password" type="password" class="form-control"
-					placeholder="Password" /> <span>${error}</span> <input
-					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					class="form-control" placeholder="Email" /> <input name="password"
+					type="password" class="form-control" placeholder="Password" /> <span>${error}</span>
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Log
 					In</button>
@@ -44,6 +45,6 @@
 		</form>
 
 	</div>
-	
+
 </body>
 </html>

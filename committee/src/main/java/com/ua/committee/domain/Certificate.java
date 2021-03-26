@@ -15,34 +15,34 @@ public class Certificate {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	 @Column(name = "id")
+	@Column(name = "id")
 	private Integer id;
-	
+
 	@Column
 	private Integer math;
-	
+
 	@Column
 	private Integer history;
-	
+
 	@Column
 	private Integer physics;
-	
+
 	@Column
 	private Integer biology;
-	
+
 	@Column
 	private Integer chemistry;
-	
+
 	@Column
 	private Integer english;
-	
+
 	@OneToOne
 	@MapsId
 	private User user;
 
 	public Certificate() {
 	}
-	
+
 	public Certificate(Certificate certificate) {
 		this.math = certificate.math;
 		this.history = certificate.history;
@@ -50,7 +50,7 @@ public class Certificate {
 		this.biology = certificate.biology;
 		this.chemistry = certificate.chemistry;
 		this.english = certificate.english;
-		
+
 	}
 
 	public Certificate(Integer math, Integer history, Integer physics, Integer biology, Integer chemistry,
@@ -201,8 +201,8 @@ public class Certificate {
 
 	@Override
 	public String toString() {
-		return "Cert [id=" + id + ", math=" + math + ", history=" + history + ", physics=" + physics
-				+ ", biology=" + biology + ", chemistry=" + chemistry + ", english=" + english + "]";
+		return "Cert [id=" + id + ", math=" + math + ", history=" + history + ", physics=" + physics + ", biology="
+				+ biology + ", chemistry=" + chemistry + ", english=" + english + "]";
 	}
 
 }

@@ -14,7 +14,8 @@
 <meta name="author" content="">
 <title>Admin Menu</title>
 
-<link rel="stylesheet prefetch" href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel="stylesheet prefetch"
+	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -28,16 +29,18 @@
 		</form>
 
 		<h3 class="hello">
-			Welcome ${pageContext.request.userPrincipal.name} | <a
+			${pageContext.request.userPrincipal.name} | <a
 				onclick="document.forms['logoutForm'].submit()">Logout</a>
 		</h3>
 	</c:if>
 
-	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 15%; top: 0;">
+	<div class="w3-sidebar w3-light-grey w3-bar-block"
+		style="width: 15%; top: 0;">
 		<h3 class="w3-bar-item">Menu</h3>
-		<a href="/admin" class="w3-bar-item w3-button">Home</a>
-		<a href="/createFaculty" class="w3-bar-item w3-button">Add faculty</a>
-		<a	href="/registrations" class="w3-bar-item w3-button">Check registrations</a>
+		<a href="/admin" class="w3-bar-item w3-button">Home</a> <a
+			href="/createFaculty" class="w3-bar-item w3-button">Add faculty</a> <a
+			href="/registrations" class="w3-bar-item w3-button">Check
+			registrations</a>
 	</div>
 
 </body>
