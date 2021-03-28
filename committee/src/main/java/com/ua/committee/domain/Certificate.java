@@ -201,7 +201,7 @@ public class Certificate {
 
 	@Override
 	public String toString() {
-		return "Cert [id=" + id + ", math=" + math + ", history=" + history + ", physics=" + physics + ", biology="
+		return "Certificate [id=" + id + ", math=" + math + ", history=" + history + ", physics=" + physics + ", biology="
 				+ biology + ", chemistry=" + chemistry + ", english=" + english + "]";
 	}
 

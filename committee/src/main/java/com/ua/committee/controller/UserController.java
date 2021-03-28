@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ua.committee.domain.User;
+import com.ua.committee.domain.UserRole;
 import com.ua.committee.service.UserService;
 
 @Controller
@@ -68,7 +69,8 @@ public class UserController {
 
 		user.setImage(Base64.getEncoder().encodeToString(photo.getBytes()));
 		userService.update(user);
-
+		user.setRole(UserRole.ROLE_APPROVED);
+		userService.update(user);
 		return "redirect:/login";
 	}
 

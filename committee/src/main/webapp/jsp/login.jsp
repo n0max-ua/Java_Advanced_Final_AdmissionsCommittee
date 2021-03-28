@@ -15,17 +15,18 @@
 
 <title>Log in</title>
 
-<link rel="stylesheet prefetch"
-	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 </head>
 
 <body>
 
-	<div class="container">
+	<div class="container" style="margin-top: 15%;">
 
-		<form method="POST" action="${contextPath}/login" class="form-signin">
+		<form method="POST" action="${contextPath}/login" class="form-signin" style="border-radius: 5%; padding: 1%; box-shadow: 0px 0px 20px 8px;">
 			<h2 class="form-heading">Log in</h2>
 
 			<div class="form-group ${error != null ? 'has-error' : ''}">

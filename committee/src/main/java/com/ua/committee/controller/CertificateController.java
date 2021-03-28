@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ua.committee.domain.Certificate;
 import com.ua.committee.domain.User;
-import com.ua.committee.domain.UserRole;
 import com.ua.committee.service.CertificateService;
 import com.ua.committee.service.UserService;
 
@@ -41,12 +40,12 @@ public class CertificateController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userEmail = auth.getName();
 		User user = userService.findByEmail(userEmail);
-		user.setRole(UserRole.ROLE_APPROVED);
-
-		userService.update(user);
-		certificateForm.setUser(user);
-		certificateService.save(certificateForm);
-
+	
+		if(user.getCertificate() == null) {
+			certificateForm.setUser(user);
+			certificateService.save(certificateForm);
+		}
+		
 		return "redirect:/addPhoto";
 
 	}

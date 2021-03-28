@@ -45,9 +45,11 @@ public class FacultyRegistrationController {
 				.getDeclaredField(facultyRegistration.getFaculty().getSecondSubject().toLowerCase());
 		Field third = Certificate.class
 				.getDeclaredField(facultyRegistration.getFaculty().getThirdSubject().toLowerCase());
+		
 		first.setAccessible(true);
 		second.setAccessible(true);
 		third.setAccessible(true);
+		
 		int firstSubject = (int) first.get(certificate);
 		int secondSubject = (int) second.get(certificate);
 		int thirdSubject = (int) third.get(certificate);
