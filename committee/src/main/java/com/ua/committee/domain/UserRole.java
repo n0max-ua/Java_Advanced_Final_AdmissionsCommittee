@@ -1,5 +1,5 @@
 package com.ua.committee.domain;
 
 public enum UserRole {
-	ADMIN, USER, STUDENT
+	ROLE_ADMIN, ROLE_USER, ROLE_APPROVED
 }

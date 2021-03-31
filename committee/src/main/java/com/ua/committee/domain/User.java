@@ -2,37 +2,98 @@ package com.ua.committee.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "user")
 public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private Integer id;
+
+	@Column
 	private String firstName;
+
+	@Column
 	private String lastName;
+
+	@Column
 	private String email;
+
+	@Enumerated(EnumType.STRING)
 	private UserRole role;
+
+	@Column
 	private String password;
-	private Сertificate certificate;
-	private List<Faculty> availableFaculty;
+
+	@Transient
+	private String passwordConfirm;
+
+	@Lob
+	private String image;
+
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Certificate certificate;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<FacultyRegistration> availableFaculty;
+
+	@ManyToOne()
+	@JoinColumn(name = "faculty_id")
+	private Faculty faculty;
 
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String email, UserRole role, String password,
-			Сertificate certificate) {
+	public User(User user) {
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.email = user.email;
+		this.role = user.role;
+		this.password = user.password;
+		this.certificate = user.certificate;
+		this.image = user.image;
+		this.faculty = user.faculty;
+	}
+
+	public User(String firstName, String lastName, String email, UserRole role, String password, String passwordConfirm,
+			Certificate certificate) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.role = role;
 		this.password = password;
+		this.passwordConfirm = passwordConfirm;
 		this.certificate = certificate;
+
 	}
 
 	public User(Integer id, String firstName, String lastName, String email, UserRole role, String password,
-			Сertificate certificate) {
+			String passwordConfirm, Certificate certificate) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.role = role;
 		this.password = password;
+		this.passwordConfirm = passwordConfirm;
 		this.certificate = certificate;
 	}
 
@@ -84,19 +145,43 @@ public class User {
 		this.password = password;
 	}
 
-	public Сertificate getCertificate() {
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+
+	public Faculty getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public Certificate getCertificate() {
 		return certificate;
 	}
 
-	public void setCertificate(Сertificate certificate) {
+	public void setCertificate(Certificate certificate) {
 		this.certificate = certificate;
 	}
 
-	public List<Faculty> getAvailableFaculty() {
+	public List<FacultyRegistration> getAvailableFaculty() {
 		return availableFaculty;
 	}
 
-	public void setAvailableFaculty(List<Faculty> availableFaculty) {
+	public void setAvailableFaculty(List<FacultyRegistration> availableFaculty) {
 		this.availableFaculty = availableFaculty;
 	}
 
